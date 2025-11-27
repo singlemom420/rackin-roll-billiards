@@ -1,0 +1,202 @@
+.appShell {
+  position: relative;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #15151f 0, #050509 55%, #010103 100%);
+  color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.neonBackdrop {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 5%, rgba(0, 255, 120, 0.22), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(0, 255, 120, 0.16), transparent 60%),
+    radial-gradient(circle at 50% 95%, rgba(0, 255, 120, 0.14), transparent 60%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.neonBackdrop::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/rackin-roll-neon-sign.png');
+  background-repeat: no-repeat;
+  background-position: center 14vh;
+  background-size: min(720px, 80vw);
+  opacity: 0.45;
+  filter: blur(0.5px);
+}
+
+.appShell::before {
+  content: '';
+  position: fixed;
+  inset: 18px;
+  border-radius: 26px;
+  border: 2px solid rgba(255, 64, 196, 0.9);
+  box-shadow:
+    0 0 8px rgba(255, 64, 196, 0.9),
+    0 0 22px rgba(255, 64, 196, 0.7);
+  pointer-events: none;
+  opacity: 0.4;
+  animation: neonFrameFlicker 4.5s infinite ease-in-out;
+  z-index: 1;
+}
+
+.header {
+  padding: 1.5rem 6vw 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3));
+  position: relative;
+  z-index: 3;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImg {
+  border-radius: 12px;
+  background: #000;
+  padding: 4px;
+}
+
+.brandText h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brandText p {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.nav {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.navLink {
+  position: relative;
+  padding-bottom: 0.4rem;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffffff, #ff40c4);
+  box-shadow: none;
+  transition: width 0.18s ease-out, box-shadow 0.18s ease-out;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+  width: 100%;
+  box-shadow:
+    0 0 6px rgba(255, 64, 196, 0.85),
+    0 0 16px rgba(255, 64, 196, 0.7);
+}
+
+.navLinkActive::after {
+  width: 100%;
+  box-shadow:
+    0 0 8px rgba(255, 64, 196, 0.95),
+    0 0 22px rgba(255, 64, 196, 0.8);
+  animation: neonUnderlineFlicker 4.5s infinite ease-in-out;
+}
+
+.main {
+  flex: 1;
+  padding: 1.5rem 6vw 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.footer {
+  padding: 1rem 6vw 1.5rem;
+  font-size: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.9);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes neonFrameFlicker {
+  0%, 78%, 100% {
+    opacity: 0.4;
+    box-shadow:
+      0 0 8px rgba(255, 64, 196, 0.9),
+      0 0 22px rgba(255, 64, 196, 0.7);
+  }
+  79% {
+    opacity: 0.15;
+    box-shadow:
+      0 0 4px rgba(255, 64, 196, 0.4),
+      0 0 10px rgba(255, 64, 196, 0.3);
+  }
+  81% {
+    opacity: 0.55;
+    box-shadow:
+      0 0 12px rgba(255, 64, 196, 1),
+      0 0 26px rgba(255, 64, 196, 0.9);
+  }
+  83% {
+    opacity: 0.25;
+  }
+  86% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes neonUnderlineFlicker {
+  0%, 78%, 100% {
+    box-shadow:
+      0 0 8px rgba(255, 64, 196, 0.95),
+      0 0 22px rgba(255, 64, 196, 0.8);
+  }
+  79% {
+    box-shadow:
+      0 0 3px rgba(255, 64, 196, 0.4),
+      0 0 8px rgba(255, 64, 196, 0.3);
+  }
+  81% {
+    box-shadow:
+      0 0 10px rgba(255, 64, 196, 1),
+      0 0 26px rgba(255, 64, 196, 0.95);
+  }
+  83% {
+    box-shadow:
+      0 0 5px rgba(255, 64, 196, 0.6),
+      0 0 12px rgba(255, 64, 196, 0.5);
+  }
+}
