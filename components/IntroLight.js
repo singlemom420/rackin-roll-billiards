@@ -8,7 +8,6 @@ export default function IntroNeon() {
         <p>
           Pool techs who treat every table like it’s the center of the room. Moving, refelts,
           repairs, leveling, and curated new and pre-owned tables to a worthy finish.
-          finish.
         </p>
       </div>
     </section>
